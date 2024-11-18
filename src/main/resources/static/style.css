@@ -1,0 +1,427 @@
+.square-header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 80px;
+    background-color: #ffffff;
+}
+
+.square-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 0 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.square-logo img {
+    width: 70px;
+    height: auto;
+    padding: 10px;
+}
+
+.square-header ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.square-header li {
+    margin: 0 20px;
+}
+
+.square-header a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.square-header a:hover {
+    color: #007bff;
+}
+
+.square-main-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+    align-items: center;
+}
+
+.square-main-nav li {
+    display: flex;
+    align-items: center;
+}
+
+.square-main-nav a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.square-main-nav img {
+    width: 24px;
+    height: auto;
+    display: block;
+}
+
+.square-has-submenu {
+    position: relative;
+}
+
+.square-sub-search {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 150px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 8px 0;
+    z-index: 1000;
+    opacity: 0;
+}
+
+.square-has-submenu:hover .square-sub-search {
+    display: block;
+    opacity: 1;
+}
+
+.square-sub-search li {
+    margin: 0;
+    padding: 0;
+    display: block;
+    
+}
+
+.square-sub-search a {
+    padding: 8px 16px;
+    display: block;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.square-sub-search a:hover {
+    background-color: #f5f5f5;
+    color: #007bff;
+}
+
+.square-banner {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.square-carousel {
+    width: 100%;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.square-carousel-inner {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+    overflow: hidden;
+}
+
+.square-carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(100%);
+}
+
+.square-carousel-item.active {
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.square-carousel-item.previous {
+    transform: translateX(-100%);
+    z-index: 1;
+}
+
+.square-carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.square-carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.square-prev {
+    left: 10px;
+}
+
+.square-next {
+    right: 10px;
+}
+
+.square-carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.square-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.square-dot.active {
+    background: white;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding-top: 90px;
+}
+
+.square-slogan-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    margin: 10px auto;
+    padding: 0 20px;
+
+}
+
+.square-sliding-text {
+    display: flex;
+    white-space: nowrap;
+    animation: slide 20s linear infinite;
+    will-change: auto;
+}
+
+.square-sliding-text span {
+    font-size: 20px;
+    color: black;
+    margin-right: 50px;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.square-content-container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.square-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.square-content-block {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.square-content-block.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.square-content-block:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.square-content-block h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.square-content-block p {
+    margin: 0;
+    color: #666;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.square-map-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: #f5f5f5;
+    border: 2px dashed #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #666;
+    font-size: 1.2em;
+}
+
+.square-map-placeholder p {
+    margin: 5px 0;
+}
+
+.square-content2-container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.square-content2 {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.square-content2-block {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: calc(20% - 16px);
+    height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.square-content2-block.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.square-content2-block:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.square-content2-block h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.square-content2-block p {
+    margin: 0;
+    color: #666;
+}
+
+.square-banner-container {
+    margin-top: 100px;
+    width: 100%;
+}
+
+/* Carousel 크기 조정을 위한 스타일 추가 */
+#carouselExampleIndicators {
+    width: 100%;
+    height: auto;
+    max-height: 80vh; /* 뷰포트 높이의 80%로 제한 */
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 비율 유지 */
+    position: relative;
+}
+
+.carousel-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율 유지하면서 영역 채우기 */
+}
+
+/* 작은 화면에서의 높이 조정 */
+@media (max-width: 768px) {
+    #carouselExampleIndicators {
+        max-height: 50vh; /* 모바일에서는 뷰포트 높이의 50%로 제한 */
+    }
+}
+
+.carousel-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
