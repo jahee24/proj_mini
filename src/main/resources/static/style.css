@@ -1,3 +1,43 @@
+:root {
+  --primary-green: #4CAF50;
+  --light-green: #8BC34A;
+  --grass-green: #66BB6A;
+  --white: #ffffff;
+  --light-gray: #f5f7f5;
+}
+
+.square-header {
+  background: var(--white);
+  border-bottom: 3px solid var(--grass-green);
+}
+
+.square-header a:hover {
+  color: var(--primary-green);
+}
+
+.square-content-block {
+  background: var(--white);
+  border: 2px solid var(--light-green);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.square-content-block:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(76, 175, 80, 0.2);
+  border-color: var(--primary-green);
+}
+
+.square-slogan-container {
+  background: var(--primary-green);
+  border: none;
+  color: var(--white);
+}
+
+.square-sliding-text span {
+  color: var(--white);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
 .square-header-container {
     position: fixed;
     top: 0;
@@ -222,7 +262,7 @@ body {
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 50px;
+    height: 30px;
     background-color: #ffffff;
     display: flex;
     align-items: center;
@@ -240,7 +280,7 @@ body {
 }
 
 .square-sliding-text span {
-    font-size: 20px;
+    font-size: 15px;
     color: black;
     margin-right: 50px;
 }
@@ -255,9 +295,10 @@ body {
 }
 
 .square-content-container {
-    padding: 40px 20px;
+    padding: 30px 20px;
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 20px auto;
+
 }
 
 .square-content {
@@ -270,7 +311,6 @@ body {
 
 .square-content-block {
     background-color: #ffffff;
-    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
@@ -282,11 +322,10 @@ body {
     align-items: center;
     text-align: center;
     opacity: 1;
-    transform: translateY(0);
 }
 
 .square-content-block.show {
-    opacity: 1;
+    opacity: 0;
     transform: translateY(0);
 }
 
@@ -361,8 +400,9 @@ html, body {
 }
 
 .square-content2-block:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(76, 175, 80, 0.2);
+    border-color: var(--primary-green);
 }
 
 .square-content2-block h3 {
@@ -423,5 +463,141 @@ html, body {
     align-items: center;
 }
 
+/* 모달 크기 조정을 위한 스타일 */
+.modal-xl {
+    max-width: 60vw !important;
+}
 
+.custom-modal {
+    height: 60vh;
+}
 
+/* 모바일 대응을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+    .modal-xl {
+        max-width: 90vw !important;
+    }
+}
+
+/* 모달 내부 스타일링 */
+.location-info-container {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+}
+
+.location-image {
+    flex: 0 0 40%;
+    max-width: 40%;
+}
+
+.location-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.location-details {
+    flex: 1;
+    padding: 10px;
+}
+
+.location-details h5 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.location-details p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.modal-footer {
+    justify-content: flex-end;
+    padding: 15px;
+}
+
+.modal-footer .btn-primary {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+}
+
+/* 모달 반응형 스타일 */
+@media (max-width: 768px) {
+    .location-info-container {
+        flex-direction: column;
+    }
+
+    .location-image {
+        max-width: 100%;
+    }
+
+    .location-image img {
+        height: 200px;
+    }
+}
+
+.square-content-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.square-map-container {
+    margin: 50px auto;
+    max-width: 1200px;
+    padding: 30px;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.square-map-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.square-map {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* 버튼 스타일 */
+.btn-primary {
+  background-color: var(--primary-green);
+  border-color: var(--grass-green);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--grass-green);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+/* 카드 호버 효과 */
+.square-content2-block {
+  background: var(--white);
+  border: 2px solid var(--light-green);
+  transition: all 0.4s ease;
+}
+
+.square-content2-block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(76, 175, 80, 0.2);
+  border-color: var(--primary-green);
+}
