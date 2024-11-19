@@ -12,6 +12,10 @@ function init() {
     initCarousel();
     initSlidingText();
     initScrollAnimation();
+    initNavigation();
+    initAuthForms();
+    initComnotice();
+    initFooter();
 }
 
 function initCarousel() {
@@ -120,7 +124,51 @@ function initScrollAnimation() {
     });
 }
 
-
+// 네비게이션 메뉴 관련 기능 추가
+function initNavigation() {
+    const navItems = document.querySelectorAll('.square-has-submenu');
+    
+    // 모바일 디바이스 체크
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (this.querySelector('.square-sub-search')) {
+                    e.preventDefault();
+                    this.querySelector('.square-sub-search').classList.toggle('show-mobile');
+                }
+            });
+        });
+    }
+    
+    // 스크롤 시 헤더 스타일 변경
+    let lastScroll = 0;
+    const header = document.querySelector('.square-header-container');
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > lastScroll && currentScroll > 80) {
+            // 스크롤 다운
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // 스크롤 업
+            header.style.transform = 'translateY(0)';
+        }
+        
+        // 스크롤 위치에 따른 헤더 스타일
+        if (currentScroll > 50) {
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        } else {
+            header.style.backgroundColor = 'white';
+            header.style.boxShadow = 'none';
+        }
+        
+        lastScroll = currentScroll;
+    });
+}
 
 // 유틸리티 함수들
 const utils = {
@@ -129,3 +177,112 @@ const utils = {
         return date.toLocaleDateString();
     }
 };
+
+// 로그인/회원가입 폼 초기화
+function initAuthForms() {
+    const loginTab = document.getElementById('tab-login');
+    const registerTab = document.getElementById('tab-register');
+    const loginPane = document.getElementById('pills-login');
+    const registerPane = document.getElementById('pills-register');
+
+    // 탭 전환 이벤트
+    loginTab.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPane(loginPane, registerPane);
+        setActiveTab(loginTab, registerTab);
+    });
+
+    registerTab.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPane(registerPane, loginPane);
+        setActiveTab(registerTab, loginTab);
+    });
+
+    // 폼 제출 이벤트
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', handleFormSubmit);
+    });
+
+    // 입력 필드 포커스 이벤
+    const inputs = document.querySelectorAll('.form-outline input');
+    inputs.forEach(input => {
+        input.addEventListener('focus', handleInputFocus);
+        input.addEventListener('blur', handleInputBlur);
+    });
+}
+
+function showPane(showElement, hideElement) {
+    hideElement.classList.remove('show', 'active');
+    showElement.classList.add('show', 'active');
+}
+
+function setActiveTab(activeTab, inactiveTab) {
+    inactiveTab.classList.remove('active');
+    activeTab.classList.add('active');
+}
+
+function handleFormSubmit(e) {
+    e.preventDefault();
+    // TODO: 실제 폼 제출 로직 구현
+    console.log('Form submitted:', e.target.id);
+}
+
+function handleInputFocus(e) {
+    e.target.closest('.form-outline').classList.add('focused');
+}
+
+function handleInputBlur(e) {
+    if (!e.target.value) {
+        e.target.closest('.form-outline').classList.remove('focused');
+    }
+}
+
+// 공지사항 섹션 초기화 함수
+function initComnotice() {
+    const comnoticeItems = document.querySelectorAll('.comnotice-item');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // 순차적으로 나타나는 애니메이션 효과
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 150);
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px'
+    });
+
+    comnoticeItems.forEach((item) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        observer.observe(item);
+    });
+}
+
+// Footer 초기화 함수
+function initFooter() {
+    // 스크롤 시 footer 페이드인 효과
+    const footer = document.querySelector('.square-footer-container');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    footer.style.opacity = '0';
+    footer.style.transform = 'translateY(20px)';
+    footer.style.transition = 'all 0.5s ease';
+    
+    observer.observe(footer);
+}
