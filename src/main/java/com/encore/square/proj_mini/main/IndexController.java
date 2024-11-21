@@ -9,4 +9,10 @@ public class IndexController {
     public String index() {
         return "layout/mainLayout";
     }
+
+    @GetMapping("/resv")
+    public String resv() {
+        return "menu/resv";
+    }
+
 }
