@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>멍 스퀘어</title>
+    <style>
+        .square-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #ffffff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* 중앙 정렬 */
+            align-items: center; /* 중앙 정렬 */
+            height: 100vh; /* 전체 화면 높이 */
+            flex-direction: column; /* 헤더와 폼을 세로로 정렬 */
+        }
+
+        .square-header {
+            display: flex;
+            justify-content: space-between; /* 로고와 네비게이션을 가로로 중앙 정렬 */
+            align-items: center;
+            width: 1080px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .square-logo img {
+            width: 40px; /* 로고 크기 조정 */
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .square-main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .square-main-nav li {
+            margin-right: 20px;
+        }
+
+        .square-main-nav li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px; /* 메뉴 폰트 크기 줄임 */
+            padding: 5px 10px;
+        }
+
+        .square-main-nav li img {
+            width: 35px;
+        }
+
+        .square-has-submenu ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            list-style: none;
+        }
+
+        .square-has-submenu:hover ul {
+            display: block;
+        }
+
+        .contents {
+            display: flex;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1080px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 120px 0; /* 헤더가 고정되어 있기 때문에 폼이 겹치지 않도록 여백을 줍니다 */
+        }
+
+        .form-container {
+            width: 55%;
+            padding: 20px;
+        }
+
+        .location-container {
+            width: 40%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .location-container img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px; /* 폼 아래에 이미지를 배치하려면 margin-top을 추가 */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: lightgreen;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: lightgreen;
+        }
+
+        ul.time_list {
+            display: flex;
+            width: 100%;
+            padding: 0;
+            justify-content: center;
+        }
+
+        ul.time_list li.time_item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-left: 1px;
+            box-sizing: border-box;
+            flex: 1;
+        }
+
+        ul.time_list li.time_item.half {
+            width: 20px;
+            box-sizing: border-box;
+        }
+
+        li.time_item.half button.btn_time {
+            background-color: #aaa;
+        }
+
+        li.time_item.half.selected button.btn_time {
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 헤더
+    <div class="square-header-container">
+        <header class="square-header">
+            <div class="square-logo">
+                <a href="index.html">
+                    <img alt="로그인" src="images/logo.png">
+                </a>
+            </div>
+            <nav class="square-main-nav">
+                <ul>
+                    <li class="square-has-submenu">
+                        <a href="/reservation">예약</a>
+                        <ul class="square-sub-search">
+                            <li><a href="/reservation/new">예약</a></li>
+                            <li><a href="/reservation/check">예약 확인</a></li>
+                            <li><a href="/reservation/cancel">예약 취소</a></li>
+                        </ul>
+                    </li>
+                    <li class="square-has-submenu">
+                        <a href="/locations">지점</a>
+                        <ul class="square-sub-search">
+                            <li><a href="/locations/seoul">서울</a></li>
+                            <li><a href="/locations/gyeonggi">경기</a></li>
+                            <li><a href="/locations/incheon">인천</a></li>
+                        </ul>
+                    </li>
+                    <li class="square-has-submenu">
+                        <a href="/reviews">리뷰</a>
+                        <ul class="square-sub-search">
+                            <li><a href="/reviews/recent">최신 리뷰</a></li>
+                            <li><a href="/reviews/best">인기 리뷰</a></li>
+                            <li><a href="/reviews/write">리뷰 작성</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/login"><img alt="로그인" src="images/login.png"></a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+     예약폼 + 지점선택 -->
+
+    <div class="container">
+        <div class="wrap">
+            <div>
+                <h1>예약</h1>
+            </div>
+            <!--    <h1> &lt;!&ndash;style="position: fixed; left: 50%; transform: translateX(-50%);"&ndash;&gt;예약</h1>-->
+            <!-- 지점 선택 폼 -->
+            <div class="contents">
+                <div class="location-container">
+                    <h3 style="text-align: start;">지점 선택</h3>
+                    <form>
+                        <select id="location" name="location">
+                            <option value="gimpo">김포</option>
+                            <option value="yongin">용인</option>
+                            <option value="yangju">양주옥정</option>
+                            <option value="hwaseong">화성</option>
+                            <option value="illsan">일산</option>
+                        </select>
+                    </form>
+                    <img alt="서울 이미지" id="location-image" src="images/seoul.jpg">
+                </div>
+                <!-- 예약 폼 -->
+                <div class="form-container">
+                    <!--<h1>예약</h1>-->
+                    <form id="reservation-form">
+                        <div class="form-group">
+                            <label for="name"><h3>이름</h3></label>
+                            <input id="name" name="name" placeholder="이름을 입력하세요" required type="text">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone"><h3>연락처</h3></label>
+                            <input id="phone" name="phone" placeholder="연락처를 입력하세요" required type="tel">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date"><h3>예약 날짜</h3></label>
+                            <input id="date" name="date" required type="date">
+                        </div>
+
+                        <div class="form-group" id="reservation-time">
+                            <label for="reservation-time"><h3>예약 시간</h3></label>
+                        </div>
+
+                        <button type="submit">예약하기</button>
+                    </form>
+                </div>
+            </div >
+        </div>
+    </div>
+
+
+    <script>
+        let selectedHours = {
+            start: -1,
+            startIndex: -1,
+            end: -1,
+            endIndex: -1,
+        };
+
+        document.getElementById('reservation-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+
+            if (name && phone && date) {
+                alert(`예약 완료! \n이름: ${name} \n연락처: ${phone} \n날짜: ${date}`);
+            } else {
+                alert('모든 필드를 입력해 주세요.');
+            }
+        });
+
+        // 시간 선택 테이블 동적 생성
+        const timeTable = document.createElement("ul");
+        timeTable.classList.add('time_list');
+
+        const times = [
+            {time: '18시', selected: false, noTime: false, realHour: 18},
+            {time: '', selected: false, noTime: true, realHour: 18.5},
+            {time: '19시', selected: false, noTime: false, realHour: 19},
+            {time: '', selected: false, noTime: true, realHour: 19.5},
+            {time: '20시', selected: false, noTime: false, realHour: 20},
+            {time: '', selected: false, noTime: true, realHour: 20.5},
+            {time: '21시', selected: false, noTime: false, realHour: 21},
+            {time: '', selected: false, noTime: true, realHour: 21.5},
+            {time: '22시', selected: false, noTime: false, realHour: 22},
+            {time: '', selected: false, noTime: true, realHour: 22.5},
+            {time: '23시', selected: false, noTime: false, realHour: 23},
+            {time: '', selected: false, noTime: true, realHour: 23.5},
+            {time: '24시', selected: false, noTime: false, realHour: 24}
+        ];
+
+        // 시간 항목 생성
+        times.forEach((item, index) => {
+            const listItem = document.createElement('li');
+            listItem.classList.add('time_item', 'half');
+
+            if (item.selected) {
+                listItem.classList.add('selected');
+            }
+
+            if (item.noTime) {
+                listItem.classList.add('no_time');
+            }
+
+            const timeText = document.createElement('span');
+            timeText.classList.add('time_text');
+            timeText.textContent = item.time;
+
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.classList.add('btn_time', 'color10');
+
+            // 클릭 이벤트 처리
+            listItem.addEventListener('click', () => {
+                let currentClickedTime = times[index].realHour;
+
+                if (selectedHours.start < 0) {
+                    selectedHours.start = currentClickedTime;
+                    selectedHours.startIndex = index;
+                    listItem.classList.add('selected');
+                } else if (selectedHours.end < 0) {
+                    selectedHours.end = currentClickedTime;
+                    selectedHours.endIndex = index;
+                    document.querySelectorAll("li.time_item.half").forEach((v, i) => {
+                        if (i >= selectedHours.startIndex && i <= selectedHours.endIndex)
+                            v.classList.add('selected');
+                    });
+                } else {
+                    selectedHours.start = currentClickedTime;
+                    selectedHours.startIndex = index;
+                    selectedHours.end = -1;
+                    selectedHours.endIndex = -1;
+                    document.querySelectorAll("li.time_item.half").forEach((v) => {
+                        v.classList.remove('selected');
+                    });
+                    listItem.classList.add('selected');
+                }
+
+                console.log(times[index].realHour + " 누름");
+            });
+
+            // 생성된 요소들을 리스트 아이템에 추가
+            listItem.appendChild(timeText);
+            listItem.appendChild(button);
+
+            // <ul>에 리스트 아이템을 추가
+            timeTable.appendChild(listItem);
+        });
+
+        document.getElementById("reservation-time").appendChild(timeTable);
+    </script>
+</body>
+</html>
