@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>멍 스퀘어</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=60afe906424b612470250c46b5008b53"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <div class="square-header-container">
+    <header class="square-header">
+      <div class="square-logo">
+        <a href="../../../../../../../../Users/playdata2/Downloads/index.html">
+          <img src="images/logo.png" alt="로그인">
+        </a>
+      </div>
+      <nav class="square-main-nav">
+        <ul>
+          <li class="square-has-submenu">
+            <a href="https://about.mungsquare.com" target="_blank">About</a>
+          </li>
+          <li class="square-has-submenu">
+            <a href="https://reservation.mungsquare.com" target="_blank">Reservation</a>
+          </li>
+          <li class="square-has-submenu">
+            <a href="#">Support</a>
+            <ul class="square-sub-search">
+              <li><a href="/support/notice">Notice</a></li>
+              <li><a href="qna.html">Q&A</a></li>
+            </ul>
+          </li>
+          <li><a href="/signup" class="signup-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                 aria-controls="offcanvasRight">Sign in</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>자주묻는 질문</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f4f4f9;
+          display: flex;
+        }
+
+        /* 왼쪽 배너 스타일 */
+        .sidebar {
+          width: 200px;
+          background: #ffffff;
+          border-right: 1px solid #ddd;
+          padding: 20px;
+          height: 100vh;
+          position: fixed;
+        }
+
+        .sidebar h2 {
+          font-size: 20px;
+          margin-bottom: 20px;
+          color: #333;
+          text-align: center;
+        }
+
+        .sidebar .menu {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .sidebar .menu li {
+          margin-bottom: 10px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #ddd;
+        }
+
+        .sidebar .menu li:last-child {
+          border-bottom: none;
+        }
+
+        .sidebar .menu li a {
+          display: block;
+          text-decoration: none;
+          color: #5cb85c;
+          font-size: 16px;
+          text-align: left;
+        }
+
+        .sidebar .menu li a:hover {
+          color: #4cae4c;
+        }
+
+        /* 메인 콘텐츠 스타일 */
+        .main-content {
+          margin-left: 220px;
+          padding: 20px;
+          flex: 1;
+        }
+
+        .container {
+          max-width: 800px;
+          margin: 50px auto;
+        }
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+        }
+
+        .header h1 {
+          font-size: 24px;
+          margin: 0;
+          color: #333;
+        }
+
+        .add-btn {
+          padding: 10px 20px;
+          background-color: #5cb85c;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          font-size: 16px;
+          cursor: pointer;
+        }
+
+        .add-btn:hover {
+          background-color: #4cae4c;
+        }
+
+        .board {
+          background: #ffffff;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-list {
+          list-style: none;
+          padding: 0;
+        }
+
+        .question-list li {
+          margin-bottom: 15px;
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 10px;
+          position: relative;
+        }
+
+        .question-list li .title {
+          font-size: 16px;
+          font-weight: bold;
+          color: #5cb85c;
+          cursor: pointer;
+        }
+
+        .question-list li .content {
+          margin-top: 10px;
+          font-size: 14px;
+          color: #555;
+          display: none; /* 숨김 처리 */
+        }
+
+        .question-list li .actions {
+          margin-top: 10px;
+        }
+
+        .question-list li .actions button {
+          margin-right: 10px;
+          padding: 5px 10px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        .question-list li .actions .edit {
+          background-color: #ffa500;
+          color: white;
+        }
+
+        .question-list li .actions .delete {
+          background-color: #ff6347;
+          color: white;
+        }
+
+        .question-list li .actions .comment {
+          background-color: #5cb85c;
+          color: white;
+        }
+
+        .question-list li:hover .title {
+          color: #4cae4c;
+        }
+
+        /* 팝업 스타일 */
+        .popup {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: white;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+          z-index: 1000;
+          width: 90%;
+          max-width: 400px;
+        }
+
+        .popup h2 {
+          margin-top: 0;
+        }
+
+        .popup input,
+        .popup textarea,
+        .popup button {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 14px;
+        }
+
+        .popup button {
+          background-color: #5cb85c;
+          color: white;
+          border: none;
+          cursor: pointer;
+        }
+
+        .popup button:hover {
+          background-color: #4cae4c;
+        }
+
+        .overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 999;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 왼쪽 배너 -->
+      <div class="sidebar">
+        <h2>Support</h2>
+        <ul class="menu">
+          <li><a href="#notice">Notice</a></li>
+          <li><a href="#faq">QnA</a></li>
+          <li><a href="#community">Community</a></li>
+        </ul>
+      </div>
+
+      <!-- 메인 콘텐츠 -->
+      <div class="main-content">
+        <div class="container" id="faq">
+          <div class="header">
+            <h1>자주묻는 질문</h1>
+            <button class="add-btn" id="openPopup">글 작성하기</button>
+          </div>
+          <div class="board">
+            <ul class="question-list" id="questionList">
+              <!-- 질문 목록 -->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 팝업 -->
+      <div class="overlay" id="overlay"></div>
+      <div class="popup" id="popup">
+        <h2>질문 등록</h2>
+        <input type="text" id="title" placeholder="제목을 입력하세요" required />
+        <textarea id="content" rows="5" placeholder="내용을 입력하세요" required></textarea>
+        <button id="submitBtn">등록하기</button>
+      </div>
+
+      <script>
+        // 팝업 열기 및 닫기
+        const openPopup = document.getElementById('openPopup');
+        const closePopup = document.getElementById('overlay');
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+
+        openPopup.addEventListener('click', () => {
+          popup.style.display = 'block';
+          overlay.style.display = 'block';
+        });
+
+        overlay.addEventListener('click', () => {
+          popup.style.display = 'none';
+          overlay.style.display = 'none';
+        });
+
+        // 질문 등록 기능
+        document.getElementById('submitBtn').addEventListener('click', function () {
+          const title = document.getElementById('title').value.trim();
+          const content = document.getElementById('content').value.trim();
+
+          if (!title || !content) {
+            alert('제목과 내용을 모두 입력하세요.');
+            return;
+          }
+
+          // 질문 목록에 새로운 항목 추가
+          const questionList = document.getElementById('questionList');
+          const newItem = document.createElement('li');
+          newItem.innerHTML = `
+        <div class="title">${title}</div>
+        <div class="content">${content}</div>
+        <div class="actions">
+          <button class="edit">수정</button>
+          <button class="delete">삭제</button>
+          <button class="comment">댓글달기</button>
+        </div>
+      `;
+          questionList.prepend(newItem);
+
+          // 수정 기능
+          newItem.querySelector('.edit').addEventListener('click', function () {
+            const newTitle = prompt('새로운 제목:', title);
+            const newContent = prompt('새로운 내용:', content);
+            if (newTitle) newItem.querySelector('.title').textContent = newTitle;
+            if (newContent) newItem.querySelector('.content').textContent = newContent;
+          });
+
+          // 삭제 기능
+          newItem.querySelector('.delete').addEventListener('click', function () {
+            if (confirm('정말 삭제하시겠습니까?')) {
+              newItem.remove();
+            }
+          });
+
+          // 댓글 달기 기능
+          newItem.querySelector('.comment').addEventListener('click', function () {
+            const comment = prompt('댓글을 입력하세요:');
+            if (comment) {
+              const commentDiv = document.createElement('div');
+              commentDiv.textContent = `댓글: ${comment}`;
+              commentDiv.style.marginTop = '10px';
+              newItem.appendChild(commentDiv);
+            }
+          });
+
+          // 제목 클릭 시 내용 펼쳐보기
+          newItem.querySelector('.title').addEventListener('click', function () {
+            const content = newItem.querySelector('.content');
+            content.style.display = content.style.display === 'none' || content.style.display === '' ? 'block' : 'none';
+          });
+
+          // 입력 필드 초기화 및 팝업 닫기
+          document.getElementById('title').value = '';
+          document.getElementById('content').value = '';
+          popup.style.display = 'none';
+          overlay.style.display = 'none';
+        });
+      </script>
+    </body>
+    </html>
+
+  </div>
+</body>
+
