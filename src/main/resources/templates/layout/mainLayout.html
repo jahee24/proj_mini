@@ -9,10 +9,10 @@
     <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="common/style/main_style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=60afe906424b612470250c46b5008b53"></script>
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=60afe906424b612470250c46b5008b53"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
 
     <script src="common/script/main_script.js"></script>
@@ -21,16 +21,17 @@
 
 <body>
     <!--header fragment-->
-   <!-- <th:block th:replace="include/header :: header"></th:block>-->
+    <th:block th:replace="/include/header-part :: header-part"></th:block>
+
 
     <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
+                    aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
+                    aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+                    aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -44,12 +45,12 @@
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
+                data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
+                data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -118,74 +119,74 @@
 
     <div>
         <section class="comnotice">
-          <div class="container active1">
-            <h2 class="comnotice-title"> <span>함께 지켜요!</span> </h2>
-            <p>즐겁고 안전한 멍스퀘어를 위해 꼭 지켜주세요</p>
-            <ul class="comnotice-wrap">
-              <li>
-                <div class="comnotice-item">
-                  <figure><img src="images/comnotice/image_1.png" alt="반려견 관리"></figure>
-                  <h3>반려견 관리</h3>
-                  <p>반려견에게서 눈을 떼지 말고<br>항상 곁에서 지켜봐 주세요</p>
-                </div>
-              </li>
-              <li>
-                <div class="comnotice-item">
-                  <figure><img src="images/comnotice/image_2.png" alt="배변 처리"></figure>
-                  <h3>배변 처리</h3>
-                  <p>깨끗한 환경을 위해<br>배변 처리는 바로 해주세요</p>
-                </div>
-              </li>
-              <li>
-                <div class="comnotice-item">
-                  <figure><img src="images/comnotice/image_3.png" alt="음식물 제한"></figure>
-                  <h3>음식물 제한</h3>
-                  <p>운동장 내 간식/음식물<br>섭취를 제한합니다</p>
-                </div>
-              </li>
-              <li>
-                <div class="comnotice-item">
-                  <figure><img src="images/comnotice/image_4.png" alt="시설 보호"></figure>
-                  <h3>시설 보호</h3>
-                  <p>시설물을 소중히 사용하여<br>모두가 편히 이용하세요</p>
-                </div>
-              </li>
-            </ul>
-          </div>
+            <div class="container active1">
+                <h2 class="comnotice-title"><span>함께 지켜요!</span></h2>
+                <p>즐겁고 안전한 멍스퀘어를 위해 꼭 지켜주세요</p>
+                <ul class="comnotice-wrap">
+                    <li>
+                        <div class="comnotice-item">
+                            <figure><img src="images/comnotice/image_1.png" alt="반려견 관리"></figure>
+                            <h3>반려견 관리</h3>
+                            <p>반려견에게서 눈을 떼지 말고<br>항상 곁에서 지켜봐 주세요</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="comnotice-item">
+                            <figure><img src="images/comnotice/image_2.png" alt="배변 처리"></figure>
+                            <h3>배변 처리</h3>
+                            <p>깨끗한 환경을 위해<br>배변 처리는 바로 해주세요</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="comnotice-item">
+                            <figure><img src="images/comnotice/image_3.png" alt="음식물 제한"></figure>
+                            <h3>음식물 제한</h3>
+                            <p>운동장 내 간식/음식물<br>섭취를 제한합니다</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="comnotice-item">
+                            <figure><img src="images/comnotice/image_4.png" alt="시설 보호"></figure>
+                            <h3>시설 보호</h3>
+                            <p>시설물을 소중히 사용하여<br>모두가 편히 이용하세요</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </section>
     </div>
 
     <div class="square-footer-container">
         <footer class="square-footer"></footer>
-            <div class="footer-content">
-                <div class="footer-section">
-                    <img src="images/logo.png" alt="멍스퀘어 로고" class="footer-logo">
-                    <h3>멍스퀘어 (Mung-Square)</h3>
-                </div>
-                <div class="footer-section">
-                    <h4>회사 정보</h4>
-                    <p>사업자등록번호: 123-45-67890</p>
-                    <p>대표: 홍길동</p>
-                    <p>주소: 서울특별시 강남구 테헤란로 123</p>
-                </div>
-                <div class="footer-section">
-                    <h4>고객 지원</h4>
-                    <p>이메일: support@mung-square.com</p>
-                    <p>전화: 02-1234-5678</p>
-                    <p>운영시간: 평일 09:00 - 18:00</p>
-                </div>
-                <div class="footer-section">
-                    <h4>SNS</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="images/logo.png" alt="멍스퀘어 로고" class="footer-logo">
+                <h3>멍스퀘어 (Mung-Square)</h3>
+            </div>
+            <div class="footer-section">
+                <h4>회사 정보</h4>
+                <p>사업자등록번호: 123-45-67890</p>
+                <p>대표: 홍길동</p>
+                <p>주소: 서울특별시 강남구 테헤란로 123</p>
+            </div>
+            <div class="footer-section">
+                <h4>고객 지원</h4>
+                <p>이메일: support@mung-square.com</p>
+                <p>전화: 02-1234-5678</p>
+                <p>운영시간: 평일 09:00 - 18:00</p>
+            </div>
+            <div class="footer-section">
+                <h4>SNS</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 멍스퀘어. All rights reserved.</p>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 멍스퀘어. All rights reserved.</p>
+        </div>
         </footer>
     </div>
 
@@ -327,112 +328,7 @@
         </div>
     </div>
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="tab-login" data-bs-toggle="pill" data-bs-target="#pills-login" role="tab"
-                        aria-controls="pills-login" aria-selected="true">Login</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="tab-register" data-bs-toggle="pill" data-bs-target="#pills-register" role="tab"
-                        aria-controls="pills-register" aria-selected="false">Register</a>
-                </li>
-            </ul>
-        </div>
-        <div class="offcanvas-body">
-            <!-- Pills content -->
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                    <form>
-                        <!-- Email input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="email" id="loginName" class="form-control" />
-                            <label class="form-label" for="loginName">Email or username</label>
-                        </div>
 
-                        <!-- Password input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="password" id="loginPassword" class="form-control" />
-                            <label class="form-label" for="loginPassword">Password</label>
-                        </div>
-
-                        <!-- 2 column grid layout -->
-                        <div class="row mb-4">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <!-- Checkbox -->
-                                <div class="form-check mb-3 mb-md-0">
-                                    <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-                                    <label class="form-check-label" for="loginCheck"> Remember me </label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <!-- Simple link -->
-                                <a href="#!">Forgot password?</a>
-                            </div>
-                        </div>
-
-                        <!-- Submit button -->
-                        <button type="submit" data-mdb-button-init data-mdb-ripple-init
-                            class="btn btn-primary btn-block mb-4">Log in</button>
-
-                        <!-- Register buttons -->
-                        <div class="text-center">
-                            <p>Not a member? <a href="#!">Register</a></p>
-                        </div>
-                    </form>
-                </div>
-                <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                    <form>
-                        <!-- Name input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="text" id="registerName" class="form-control" />
-                            <label class="form-label" for="registerName">Name</label>
-                        </div>
-
-                        <!-- Username input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="text" id="registerUsername" class="form-control" />
-                            <label class="form-label" for="registerUsername">Username</label>
-                        </div>
-
-                        <!-- Email input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="email" id="registerEmail" class="form-control" />
-                            <label class="form-label" for="registerEmail">Email</label>
-                        </div>
-
-                        <!-- Password input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="password" id="registerPassword" class="form-control" />
-                            <label class="form-label" for="registerPassword">Password</label>
-                        </div>
-
-                        <!-- Repeat Password input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="password" id="registerRepeatPassword" class="form-control" />
-                            <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-                        </div>
-
-                        <!-- Checkbox -->
-                        <div class="form-check d-flex justify-content-center mb-4">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-                                aria-describedby="registerCheckHelpText" />
-                            <label class="form-check-label" for="registerCheck">
-                                I have read and agree to the terms
-                            </label>
-                        </div>
-
-                        <!-- Submit button -->
-                        <button type="submit" data-mdb-button-init data-mdb-ripple-init
-                            class="btn btn-primary btn-block mb-3">Sign Up</button>
-                    </form>
-                </div>
-            </div>
-            <!-- Pills content -->
-        </div>
-    </div>
 </body>
 
 </html>
